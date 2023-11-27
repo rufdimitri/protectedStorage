@@ -1,7 +1,16 @@
 7-Zip (r) 23.01 (x86) : Igor Pavlov : Public domain : 2023-06-20
 
 Example1: Add files to archive
- .\7zr.exe a "test.7z" "testfile1.txt" "testfile2.txt" "testfile3 space.txt"
+.\7zr.exe a "test.7z" "testfile1.txt" "testfile2.txt" "testfile3 space.txt"
+
+Example2: Extract all files with full paths from archive to selected directory
+.\7zr.exe x -o"C:\Temp\7zr\" test.7z *
+
+Example3: Add files to archive with a password
+.\7zr.exe a -pPASSWORD "test.7z" "testfile1.txt" "testfile2.txt" "testfile3 space.txt"
+
+Example4: Extract files from password-protected archive
+.\7zr.exe x -pPASSWORD -o"C:\Temp\7zr\" test.7z *
 
 Usage: 7zr <command> [<switches>...] <archive_name> [<file_names>...] [@listfile]
 
