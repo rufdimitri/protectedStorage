@@ -20,7 +20,7 @@ public class ResourceUtil {
         final URI exe;
 
         uri = getJarURI();
-        exe = getFile(uri, "Main.class");
+        exe = getFile(uri, "Main.class"); //TODO fix this
         System.out.println(exe);
     }
 
