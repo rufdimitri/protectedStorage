@@ -16,8 +16,16 @@ public class ProcessUtil {
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(process.getInputStream()));
             List<String> output = new ArrayList<>();
+            output.add("Standart output:");
             String line = "";
             while ( (line = reader.readLine()) != null ) {
+                output.add(line);
+            }
+
+            BufferedReader errReader =
+                    new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            output.add("Error output:");
+            while ( (line = errReader.readLine()) != null ) {
                 output.add(line);
             }
             return output;
