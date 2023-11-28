@@ -15,16 +15,8 @@ import java.util.zip.ZipFile;
 //TODO extract .exe file and run it, do NOT delete it every time program closes
 //TODO remove other not used funktions
 public class ResourceUtil {
-    public static void main(final String[] args) {
-        final URI uri;
-        final URI exe;
 
-        uri = getJarURI();
-        exe = getFile(uri, "Main.class"); //TODO fix this
-        System.out.println(exe);
-    }
-
-    private static URI getJarURI() {
+    public static URI getJarURI() {
         final ProtectionDomain domain;
         final CodeSource source;
         final URL url;
@@ -42,7 +34,7 @@ public class ResourceUtil {
         return (uri);
     }
 
-    private static URI getFile(final URI where,
+    public static URI getFile(final URI where,
                                final String fileName) {
         final File location;
         final URI fileURI;
@@ -72,7 +64,7 @@ public class ResourceUtil {
         }
     }
 
-    private static URI extract(final ZipFile zipFile,
+    public static URI extract(final ZipFile zipFile,
                                final String fileName)
             throws IOException {
         final File tempFile;
@@ -110,7 +102,7 @@ public class ResourceUtil {
         return (tempFile.toURI());
     }
 
-    private static void close(final Closeable stream) {
+    public static void close(final Closeable stream) {
         if (stream != null) {
             try {
                 stream.close();
