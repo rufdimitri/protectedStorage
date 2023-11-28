@@ -17,9 +17,9 @@ public class App {
         System.out.println(exeURI.getPath());
 
         //Run .exe
-        File exeFile = new File("c:\\Program Files\\Java\\jdk1.8.0_211\\bin\\javac.exe");
+        File exeFile = new File(exeURI.getPath());
 
-        List<String> strings = ProcessUtil.runProcess(exeFile.getParent(), new String[]{exeFile.getAbsolutePath(), "-Werror"});
+        List<String> strings = ProcessUtil.runProcess(exeFile.getParent(), new String[]{exeFile.getAbsolutePath(), "h -Werror"});
         for (String string : strings) {
             System.out.println(string);
         }
