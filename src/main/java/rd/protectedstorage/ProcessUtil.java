@@ -8,25 +8,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProcessUtil {
-    public static List<String> runProcess(String pathTofile, String[] filenameWithParams) {
+    public static ProcessOutput runProcess(String pathTofile, String[] filenameWithParams) {
         ProcessBuilder pb = new ProcessBuilder(filenameWithParams);
         pb.directory(new File(pathTofile));
         try {
             Process process = pb.start();
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(process.getInputStream()));
-            List<String> output = new ArrayList<>();
-            output.add("Standart output:");
+            ProcessOutput output = new ProcessOutput();
+
             String line = "";
+            //Standart output:
             while ( (line = reader.readLine()) != null ) {
-                output.add(line);
+                output.getStandard().add(line);
             }
 
             BufferedReader errReader =
                     new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            output.add("Error output:");
+            //Error output:
             while ( (line = errReader.readLine()) != null ) {
-                output.add(line);
+                output.getError().add(line);
             }
             return output;
         } catch (IOException e) {

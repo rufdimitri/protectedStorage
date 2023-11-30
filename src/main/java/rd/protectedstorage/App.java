@@ -19,8 +19,11 @@ public class App {
         //Run .exe
         File exeFile = new File(exeURI.getPath());
 
-        List<String> strings = ProcessUtil.runProcess(exeFile.getParent(), new String[]{exeFile.getAbsolutePath(), "h -Werror"});
-        for (String string : strings) {
+        ProcessOutput output = ProcessUtil.runProcess(exeFile.getParent(), new String[]{exeFile.getAbsolutePath(), "h -Werror"});
+        for (String string : output.getError()) {
+            System.out.println(string);
+        }
+        for (String string : output.getStandard()) {
             System.out.println(string);
         }
     }
